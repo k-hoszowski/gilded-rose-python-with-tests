@@ -18,14 +18,10 @@ class GildedRose:
                             items[i].quality = items[i].quality + 1
 
                     if isBackstagePasses:
-                        if items[i].sell_in < 11:
-                            # See revision number 2394 on SVN.
-                            if items[i].quality < 50:
-                                items[i].quality = items[i].quality + 1
-                        # Increases the Quality of Backstage Passes if the Quality is 6 or less.
                         if items[i].sell_in < 6:
-                            if items[i].quality < 50:
-                                items[i].quality = items[i].quality + 1
+                            items[i].quality = items[i].quality + 2
+                        elif items[i].sell_in < 11:
+                            items[i].quality = items[i].quality + 1
 
             if not isSulfuras:
                 items[i].sell_in = items[i].sell_in - 1
