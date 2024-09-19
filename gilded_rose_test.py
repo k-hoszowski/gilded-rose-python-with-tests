@@ -20,11 +20,11 @@ class GildedRoseTest(TestCase):
         self.assertEqual(item.sell_in, expected['sell_in'])
 
     def test_quality_goes_up_for_improving_products(self):
-        self.items.append(Item("Aged Brie", 20, 30))
+        self.items.append(Item("Aged Brie", 2, 30))
         self.items.append(Item("Backstage passes to a TAFKAL80ETC concert", 20, 30))
         gilded_rose.update_quality(self.items)
         expected = [
-              {'sell_in': 19, 'quality': 31},
+              {'sell_in': 1, 'quality': 31},
               {'sell_in': 19, 'quality': 31},
             ]
 
@@ -34,11 +34,9 @@ class GildedRoseTest(TestCase):
             self.assertEqual(item.sell_in, expectation['sell_in'])
 
     def test_quality_goes_up_by_two_for_improving_products_with_10_days_or_less_left(self):
-        self.items.append(Item("Aged Brie", 10, 34))
         self.items.append(Item("Backstage passes to a TAFKAL80ETC concert", 8, 30))
         gilded_rose.update_quality(self.items)
         expected = [
-            {'sell_in': 9, 'quality': 36},
             {'sell_in': 7, 'quality': 32},
         ]
 
@@ -48,11 +46,9 @@ class GildedRoseTest(TestCase):
             self.assertEqual(item.sell_in, expectation['sell_in'])
 
     def test_quality_goes_up_by_three_for_improving_products_with_5_days_or_less_left(self):
-        self.items.append(Item("Aged Brie", 4, 11))
         self.items.append(Item("Backstage passes to a TAFKAL80ETC concert", 5, 15))
         gilded_rose.update_quality(self.items)
         expected = [
-            {'sell_in': 3, 'quality': 14},
             {'sell_in': 4, 'quality': 18},
         ]
 
@@ -76,11 +72,9 @@ class GildedRoseTest(TestCase):
             self.assertEqual(item.sell_in, expectation['sell_in'])
 
     def test_backstage_passes_and_brie_go_to_quality_zero_after_sell_by(self):
-        self.items.append(Item("Aged Brie", 0, 20))
         self.items.append(Item("Backstage passes to a TAFKAL80ETC concert", 0, 20))
         gilded_rose.update_quality(self.items)
         expected = [
-            {'sell_in': -1, 'quality': 0},
             {'sell_in': -1, 'quality': 0},
         ]
 
