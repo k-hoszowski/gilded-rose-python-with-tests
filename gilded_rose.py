@@ -5,8 +5,9 @@ class GildedRose:
             isAgedBrie = item.name == "Aged Brie"
             isBackstagePasses = item.name == "Backstage passes to a TAFKAL80ETC concert"
             isSulfuras = item.name == "Sulfuras, Hand of Ragnaros"
+            isNormalItem = not isAgedBrie and not isBackstagePasses and not isSulfuras
 
-            if not isAgedBrie and not isBackstagePasses and not isSulfuras and item.quality > 0:
+            if isNormalItem:
                 item.quality = item.quality - 1
             else:
                 if item.quality < 50:
