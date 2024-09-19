@@ -7,6 +7,9 @@ class GildedRose:
             isSulfuras = item.name == "Sulfuras, Hand of Ragnaros"
             isNormalItem = not isAgedBrie and not isBackstagePasses and not isSulfuras
 
+            if isSulfuras:
+                continue
+
             if isNormalItem:
                 item.quality = item.quality - 1
             elif isAgedBrie or isBackstagePasses:
@@ -17,10 +20,9 @@ class GildedRose:
                 else:
                     item.quality = item.quality + 1
 
-            if not isSulfuras:
-                item.sell_in = item.sell_in - 1
-                if item.quality > 50:
-                    item.quality = 50
+            item.sell_in = item.sell_in - 1
+            if item.quality > 50:
+                item.quality = 50
 
             if item.sell_in < 0:
                 if isBackstagePasses:
