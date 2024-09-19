@@ -2,18 +2,18 @@ class GildedRose:
     @staticmethod
     def update_quality(items):
         for item in items:
-            # Legendary item
+            # Legendary item: Sulfuras
             if item.name == "Sulfuras, Hand of Ragnaros":
                 continue
 
+            item.sell_in -= 1
+            is_past_sell_date = item.sell_in < 0
             is_aged_brie = item.name == "Aged Brie"
             is_backstage_passes = item.name == "Backstage passes to a TAFKAL80ETC concert"
 
-            item.sell_in -= 1
-
-            # Special items time-wise
+            # Backstage Passes
             if is_backstage_passes:
-                if item.sell_in < 0:
+                if is_past_sell_date:
                     item.quality = 0
                 elif item.sell_in <= 5:
                     item.quality = item.quality + 3
@@ -21,14 +21,14 @@ class GildedRose:
                     item.quality = item.quality + 2
                 else:
                     item.quality = item.quality + 1
+            # Aged Brie
             elif is_aged_brie:
                 item.quality = item.quality + 1
-            else:  # Normal item
+            # Normal item
+            elif is_past_sell_date:
+                item.quality = item.quality - 2
+            else:
                 item.quality = item.quality - 1
-
-            if item.sell_in <= 0:
-                if not is_aged_brie:
-                    item.quality = item.quality - 1
 
             if item.quality < 0:
                 item.quality = 0
