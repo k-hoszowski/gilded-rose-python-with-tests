@@ -6,8 +6,14 @@ class GildedRose:
             if item.name == "Sulfuras, Hand of Ragnaros":
                 continue
 
+            # Update sell-in date
             item.sell_in -= 1
             is_past_sell_date = item.sell_in < 0
+            
+            # Avoiding redundant calls to object
+            quality = item.quality
+
+            # Checking for special items
             is_aged_brie = item.name == "Aged Brie"
             is_backstage_passes = item.name == "Backstage passes to a TAFKAL80ETC concert"
 
