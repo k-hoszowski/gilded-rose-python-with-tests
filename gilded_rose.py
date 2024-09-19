@@ -9,20 +9,16 @@ class GildedRose:
 
             if isNormalItem:
                 item.quality = item.quality - 1
+            elif isAgedBrie or isBackstagePasses:
+                if item.sell_in <= 5:
+                    item.quality = item.quality + 3
+                elif item.sell_in <= 10:
+                    item.quality = item.quality + 2
+                else:
+                    item.quality = item.quality + 1
             else:
                 if item.quality < 50:
                     item.quality = item.quality + 1
-                    if "Aged Brie" == item.name:
-                        if item.sell_in <= 5:
-                            item.quality = item.quality + 2
-                        elif item.sell_in <= 10:
-                            item.quality = item.quality + 1
-
-                    if isBackstagePasses:
-                        if item.sell_in <= 5:
-                            item.quality = item.quality + 2
-                        elif item.sell_in <= 10:
-                            item.quality = item.quality + 1
 
             if not isSulfuras:
                 item.sell_in = item.sell_in - 1
