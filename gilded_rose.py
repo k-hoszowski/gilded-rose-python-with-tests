@@ -33,13 +33,10 @@ class GildedRose:
                     items[i].quality = 50
 
             if items[i].sell_in < 0:
-                if "Aged Brie" != items[i].name:
-                    if "Backstage passes to a TAFKAL80ETC concert" != items[i].name:
-                        if items[i].quality > 0:
-                            if "Sulfuras, Hand of Ragnaros" != items[i].name:
-                                items[i].quality = items[i].quality - 1
-                    else:
-                        items[i].quality = 0
+                if "Backstage passes to a TAFKAL80ETC concert" == items[i].name:
+                    items[i].quality = 0
+                elif "Aged Brie" != items[i].name and items[i].quality > 0 and "Sulfuras, Hand of Ragnaros" != items[i].name:
+                    items[i].quality = items[i].quality - 1
                 else:
                     if items[i].quality < 50:
                         items[i].quality = items[i].quality + 1
