@@ -30,10 +30,7 @@ class GildedRose:
             else:
                 item.quality = item.quality - 1
 
-            if item.quality < 0:
-                item.quality = 0
-
-            if item.quality > 50:
-                item.quality = 50
+            # Item quality constraints
+            item.quality = min(50, max(0, item.quality))
 
         return items
