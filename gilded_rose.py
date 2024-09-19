@@ -16,9 +16,6 @@ class GildedRose:
                     item.quality = item.quality + 2
                 else:
                     item.quality = item.quality + 1
-            else:
-                if item.quality < 50:
-                    item.quality = item.quality + 1
 
             if not isSulfuras:
                 item.sell_in = item.sell_in - 1
