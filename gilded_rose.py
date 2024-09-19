@@ -6,11 +6,8 @@ class GildedRose:
             isBackstagePasses = "Backstage passes to a TAFKAL80ETC concert" == items[i].name
             isSulfuras = "Sulfuras, Hand of Ragnaros" == items[i].name
 
-            if not isAgedBrie and not isBackstagePasses:
-                # TODO: Improve this code.  Word.
-                if items[i].quality > 0:
-                    if not isSulfuras:
-                        items[i].quality = items[i].quality - 1
+            if not isAgedBrie and not isBackstagePasses and items[i].quality > 0 and not isSulfuras:
+                items[i].quality = items[i].quality - 1
             else:
                 if items[i].quality < 50:
                     items[i].quality = items[i].quality + 1
