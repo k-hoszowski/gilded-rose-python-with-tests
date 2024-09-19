@@ -1,43 +1,43 @@
 class GildedRose:
     @staticmethod
     def update_quality(items):
-        for i in range(0, len(items)):
-            isAgedBrie = items[i].name == "Aged Brie"
-            isBackstagePasses = items[i].name == "Backstage passes to a TAFKAL80ETC concert"
-            isSulfuras = items[i].name == "Sulfuras, Hand of Ragnaros"
+        for item in items:
+            isAgedBrie = item.name == "Aged Brie"
+            isBackstagePasses = item.name == "Backstage passes to a TAFKAL80ETC concert"
+            isSulfuras = item.name == "Sulfuras, Hand of Ragnaros"
 
-            if not isAgedBrie and not isBackstagePasses and not isSulfuras and items[i].quality > 0:
-                items[i].quality = items[i].quality - 1
+            if not isAgedBrie and not isBackstagePasses and not isSulfuras and item.quality > 0:
+                item.quality = item.quality - 1
             else:
-                if items[i].quality < 50:
-                    items[i].quality = items[i].quality + 1
-                    if "Aged Brie" == items[i].name:
-                        if items[i].sell_in < 6:
-                            items[i].quality = items[i].quality + 2
-                        elif items[i].sell_in < 11:
-                            items[i].quality = items[i].quality + 1
+                if item.quality < 50:
+                    item.quality = item.quality + 1
+                    if "Aged Brie" == item.name:
+                        if item.sell_in < 6:
+                            item.quality = item.quality + 2
+                        elif item.sell_in < 11:
+                            item.quality = item.quality + 1
 
                     if isBackstagePasses:
-                        if items[i].sell_in < 6:
-                            items[i].quality = items[i].quality + 2
-                        elif items[i].sell_in < 11:
-                            items[i].quality = items[i].quality + 1
+                        if item.sell_in < 6:
+                            item.quality = item.quality + 2
+                        elif item.sell_in < 11:
+                            item.quality = item.quality + 1
 
             if not isSulfuras:
-                items[i].sell_in = items[i].sell_in - 1
-                if items[i].quality > 50:
-                    items[i].quality = 50
+                item.sell_in = item.sell_in - 1
+                if item.quality > 50:
+                    item.quality = 50
 
-            if items[i].sell_in < 0:
+            if item.sell_in < 0:
                 if isBackstagePasses:
-                    items[i].quality = 0
-                elif not isAgedBrie and not isSulfuras and items[i].quality > 0:
-                    items[i].quality = items[i].quality - 1
+                    item.quality = 0
+                elif not isAgedBrie and not isSulfuras and item.quality > 0:
+                    item.quality = item.quality - 1
                 else:
-                    if items[i].quality < 50:
-                        items[i].quality = items[i].quality + 1
-                    if items[i].sell_in <= 0:
-                        items[i].quality = 0
+                    if item.quality < 50:
+                        item.quality = item.quality + 1
+                    if item.sell_in <= 0:
+                        item.quality = 0
                         # of for.
 
         return items
