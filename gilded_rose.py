@@ -2,13 +2,12 @@ class GildedRose:
     @staticmethod
     def update_quality(items):
         for item in items:
+            if item.name == "Sulfuras, Hand of Ragnaros":
+                continue
+
             isAgedBrie = item.name == "Aged Brie"
             isBackstagePasses = item.name == "Backstage passes to a TAFKAL80ETC concert"
-            isSulfuras = item.name == "Sulfuras, Hand of Ragnaros"
-            isNormalItem = not isAgedBrie and not isBackstagePasses and not isSulfuras
-
-            if isSulfuras:
-                continue
+            isNormalItem = not isAgedBrie and not isBackstagePasses
 
             if isNormalItem:
                 item.quality = item.quality - 1
