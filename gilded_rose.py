@@ -5,6 +5,7 @@ class GildedRose:
         AGED_BRIE = "Aged Brie"
         BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
         SULFURAS = "Sulfuras, Hand of Ragnaros"
+        CONJURED = "conjured"
 
         # Updating each item
         for item in items:
@@ -17,11 +18,11 @@ class GildedRose:
 
             # Update sell-in date
             item.sell_in -= 1
-            is_past_sell_date = item.sell_in < 0
+            IS_PAST_SELL_DATE = item.sell_in < 0
 
             # Backstage Passes
             if NAME == BACKSTAGE_PASSES:
-                if is_past_sell_date:
+                if IS_PAST_SELL_DATE:
                     item.quality = 0
                 elif item.sell_in <= 5:
                     item.quality += 3
@@ -32,11 +33,18 @@ class GildedRose:
             # Aged Brie
             elif NAME == AGED_BRIE:
                 item.quality += 1
+            # Conjured item
+            elif CONJURED in NAME.lower():
+                if IS_PAST_SELL_DATE:
+                    item.quality -= 4
+                else:
+                    item.quality -= 2
             # Normal item
-            elif is_past_sell_date:
-                item.quality -= 2
             else:
-                item.quality -= 1
+                if IS_PAST_SELL_DATE:
+                    item.quality -= 2
+                else:
+                    item.quality -= 1
 
             # Item quality constraints
             item.quality = max(0, min(50, item.quality))
