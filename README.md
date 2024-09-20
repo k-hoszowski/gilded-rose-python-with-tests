@@ -1,6 +1,6 @@
 Modified by me from the original, found at https://github.com/istepaniuk/gilded-rose-js-with-tests, in the following ways:
 
-0. It's in Python 3 now.  So, really the only original content is the README from "Coding Dojo" on
+0. It's in Python 3 now.  So, really the only original content is the README from "Coding Dojo" on [insert link, I propose this repo](https://github.com/emilybache/GildedRose-Refactoring-Kata)
 
 ## Installing
 
@@ -29,7 +29,7 @@ The final test, which relates to a new feature, is skipped.  Remove the `@skip` 
 Coding Dojo
 ===========
 
-Note that this Kata has been slightly modified from [the original](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/) by Terry Hughes and Bobby Johnson. Namely, in the original Kata the Brie Cheese does not behave exactly like the Backstage passes as this code does. I also think the original kata has a bug on purpose so you have to fix it. This version was used in the Madrid Software Craftsmanship meetup group, and we wanted to focus on refactoring. We had limited time, so the tests are already written and green. [This is a post in my blog about that meeting.](http://blog.istepaniuk.com/refactoring-dojo-the-gilded-rose-kata)
+Note that this Kata has been slightly modified from [the original, this link returns 404 now](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/) by Terry Hughes and Bobby Johnson. Namely, in the original Kata the Brie Cheese does not behave exactly like the Backstage passes as this code does. I also think the original kata has a bug on purpose so you have to fix it. This version was used in the Madrid Software Craftsmanship meetup group, and we wanted to focus on refactoring. We had limited time, so the tests are already written and green. [This is a post in my blog about that meeting.](http://blog.istepaniuk.com/refactoring-dojo-the-gilded-rose-kata)
 
 Gilded Rose
 ===========
@@ -49,12 +49,11 @@ Pretty simple, right? Well this is where it gets interesting:
 
  - Once the sell by date has passed, Quality degrades twice as fast.
  - The Quality of an item is never negative.
- - "Aged Brie" increases in Quality the older it gets.
  - The Quality of an item is never more than 50, but "Sulfuras" is a legendary item and as such its Quality is always 80 and it never alters.
- - "Backstage passes", like "Aged Brie", increases by one in Quality as its SellIn date approaches
+ - Unlike normal items, both "Backstage passes" AND "Aged Brie" increase by one in Quality as their SellIn date approaches
      - Quality increases by 2 when there are 10 days or less 
      - Quality increases by 3 when there are 5 days or less 
-     - Quality drops to 0 after the concert
+     - Quality drops to 0 after the concert/it goes bad
 
 We have recently signed a supplier of conjured items. This requires AN UPDATE to our system:
 
