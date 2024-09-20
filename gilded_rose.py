@@ -22,19 +22,19 @@ class GildedRose:
                 if is_past_sell_date:
                     item.quality = 0
                 elif item.sell_in <= 5:
-                    item.quality = item.quality + 3
+                    item.quality += 3
                 elif item.sell_in <= 10:
-                    item.quality = item.quality + 2
+                    item.quality += 2
                 else:
-                    item.quality = item.quality + 1
+                    item.quality += 1
             # Aged Brie
             elif is_aged_brie:
-                item.quality = item.quality + 1
+                item.quality += 1
             # Normal item
             elif is_past_sell_date:
-                item.quality = item.quality - 2
+                item.quality -= 2
             else:
-                item.quality = item.quality - 1
+                item.quality -= 1
 
             # Item quality constraints
             item.quality = max(0, min(50, item.quality))
