@@ -2,16 +2,17 @@ class GildedRose:
     @staticmethod
     def update_quality(items):
         # Special item names
-        aged_brie = "Aged Brie"
-        backstage_passes = "Backstage passes to a TAFKAL80ETC concert"
-        sulfuras = "Sulfuras, Hand of Ragnaros"
+        AGED_BRIE = "Aged Brie"
+        BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
+        SULFURAS = "Sulfuras, Hand of Ragnaros"
 
+        # Updating each item
         for item in items:
             # Avoiding redundant calls to object
-            name = item.name
-            
-            # Legendary item: Sulfuras
-            if name == sulfuras:
+            NAME = item.name
+
+            # Legendary item doesn't change
+            if NAME == SULFURAS:
                 continue
 
             # Update sell-in date
@@ -19,7 +20,7 @@ class GildedRose:
             is_past_sell_date = item.sell_in < 0
 
             # Backstage Passes
-            if name == backstage_passes:
+            if NAME == BACKSTAGE_PASSES:
                 if is_past_sell_date:
                     item.quality = 0
                 elif item.sell_in <= 5:
@@ -29,7 +30,7 @@ class GildedRose:
                 else:
                     item.quality += 1
             # Aged Brie
-            elif name == aged_brie:
+            elif NAME == AGED_BRIE:
                 item.quality += 1
             # Normal item
             elif is_past_sell_date:
