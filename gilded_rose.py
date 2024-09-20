@@ -37,6 +37,6 @@ class GildedRose:
                 item.quality = item.quality - 1
 
             # Item quality constraints
-            item.quality = min(50, max(0, item.quality))
+            item.quality = max(0, min(50, item.quality))
 
         return items
